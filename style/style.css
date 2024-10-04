@@ -1,0 +1,12 @@
+a {
+  text-decoration: none;
+  color: red;
+}
+
+.form-signin {
+  max-width: 500px;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}/*# sourceMappingURL=style.css.map */

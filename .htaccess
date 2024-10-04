@@ -1,0 +1,9 @@
+# Activer la réécriture d'URL
+RewriteEngine On
+
+# Exclure les fichiers et répertoires physiques existants
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Rediriger toutes les autres requêtes vers index.php
+RewriteRule ^ index.php [L]
