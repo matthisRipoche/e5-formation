@@ -1,6 +1,17 @@
+body {
+  background: #202020 !important;
+}
+
 a {
-  text-decoration: none;
-  color: red;
+  text-decoration: none !important;
+  color: #57c57c !important;
+}
+
+header {
+  background: #252525;
+}
+header h2 {
+  color: #57c57c;
 }
 
 .form-signin {
@@ -9,4 +20,13 @@ a {
   display: flex;
   justify-content: center;
   align-items: center;
+  color: #57c57c;
+}
+
+.form-register form {
+  background: #252525;
+}
+
+footer {
+  background: #202020;
 }/*# sourceMappingURL=style.css.map */

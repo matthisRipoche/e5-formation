@@ -1,2 +1,8 @@
-@import "parts/_base.scss";
-@import "parts/_login.scss";
+@import "var/colors";
+@import "parts/base";
+@import "bootstrap";
+@import "parts/header";
+@import "parts/login";
+@import "parts/register";
+
+@import "parts/footer";

@@ -1,4 +1,8 @@
+body {
+    background: $first_bg !important;
+}
+
 a {
-    text-decoration: none;
-    color: red;
+    text-decoration: none !important ;
+    color: $first_color !important;
 }
