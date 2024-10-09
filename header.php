@@ -34,3 +34,5 @@ $base_url = sprintf(
             </div>
         </div>
     </header>
+
+    <?php
