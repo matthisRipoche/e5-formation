@@ -1,5 +1,4 @@
 <?php
-include_once 'inc/include.php';
 include_once 'header.php';
 ?>
     <?php

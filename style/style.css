@@ -14,17 +14,82 @@ header h2 {
   color: #57c57c;
 }
 
-.form-signin {
-  max-width: 500px;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.page-login {
+  background: #202020;
+}
+.page-login .form-signin {
+  max-width: 330px;
+  padding: 1rem;
+}
+.page-login .form-signin h1 {
+  color: #57c57c;
+  margin-bottom: 20px;
+}
+.page-login .form-signin .form-floating {
+  position: relative;
+  margin-bottom: 20px;
+  color: #57c57c;
+}
+.page-login .form-signin .form-floating .form-control {
+  background: #252525;
+  border: 1px solid #57c57c;
+  color: #57c57c;
+}
+.page-login .form-signin .form-floating label {
+  color: #57c57c !important;
+  background: none;
+}
+.page-login .form-signin .form-floating label::after {
+  background: none !important;
+  color: #57c57c !important;
+}
+.page-login .form-signin button {
+  background: #57c57c;
+  border: 1px solid #57c57c;
+  color: #252525;
+}
+.page-login .form-signin button:hover {
+  background: #202020;
   color: #57c57c;
 }
 
-.form-register form {
+.page-register {
+  background: #202020;
+}
+.page-register .form-register {
+  max-width: 500px;
+  padding: 1rem;
+}
+.page-register .form-register h1 {
+  color: #57c57c;
+  margin-bottom: 20px;
+}
+.page-register .form-register .form-floating {
+  position: relative;
+  margin-bottom: 10px;
+  color: #57c57c;
+}
+.page-register .form-register .form-floating .form-control {
   background: #252525;
+  border: 1px solid #57c57c;
+  color: #57c57c;
+}
+.page-register .form-register .form-floating label {
+  color: #57c57c !important;
+  background: none;
+}
+.page-register .form-register .form-floating label::after {
+  background: none !important;
+  color: #57c57c !important;
+}
+.page-register .form-register button {
+  background: #57c57c;
+  border: 1px solid #57c57c;
+  color: #252525;
+}
+.page-register .form-register button:hover {
+  background: #202020;
+  color: #57c57c;
 }
 
 footer {

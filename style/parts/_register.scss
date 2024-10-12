@@ -1,5 +1,43 @@
-.form-register {
-    form {
-        background: $secondary_bg;
+.page-register {
+    background: $first_bg;
+    .form-register {
+        max-width: 500px;
+        padding: 1rem;
+
+        h1 {
+            color: $first_color;
+            margin-bottom: 20px;
+        }
+
+        .form-floating {
+            position: relative;
+            margin-bottom: 10px;
+            color: $first_color;
+            .form-control {
+                background: $secondary_bg;
+                border: 1px solid $first_color;
+                color: $first_color;
+            }
+
+            label {
+                color: $first_color !important;
+                background: none;
+
+                &::after {
+                    background: none !important;
+                    color: $first_color !important;
+                }
+            }
+        }
+
+        button {
+            background: $first_color;
+            border: 1px solid $first_color;
+            color: $secondary_bg;
+            &:hover {
+                background: $first_bg;
+                color: $first_color;
+            }
+        }
     }
 }
