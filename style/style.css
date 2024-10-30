@@ -7,8 +7,36 @@ a {
   color: #57c57c !important;
 }
 
+h2 {
+  color: #57c57c !important;
+}
+
+table tr th,
+table tr td {
+  background: #252525 !important;
+  color: #57c57c !important;
+}
+table input {
+  background: #202020 !important;
+  border: none !important;
+  color: #57c57c !important;
+}
+table select {
+  background: #202020 !important;
+  border: none !important;
+  color: #57c57c !important;
+  background-image: #57c57c !important;
+}
+
+.card {
+  background: #252525 !important;
+  color: #57c57c !important;
+  border: 1px solid #57c57c !important;
+}
+
 header {
   background: #252525;
+  height: 50px;
 }
 header h2 {
   color: #57c57c;
@@ -53,46 +81,53 @@ header h2 {
   color: #57c57c;
 }
 
-.page-register {
-  background: #202020;
-}
-.page-register .form-register {
-  max-width: 500px;
+.form-register {
   padding: 1rem;
 }
-.page-register .form-register h1 {
+.form-register h1 {
   color: #57c57c;
   margin-bottom: 20px;
 }
-.page-register .form-register .form-floating {
+.form-register .form-floating {
   position: relative;
   margin-bottom: 10px;
   color: #57c57c;
 }
-.page-register .form-register .form-floating .form-control {
+.form-register .form-floating .form-control {
   background: #252525;
   border: 1px solid #57c57c;
   color: #57c57c;
 }
-.page-register .form-register .form-floating label {
+.form-register .form-floating label {
   color: #57c57c !important;
   background: none;
 }
-.page-register .form-register .form-floating label::after {
+.form-register .form-floating label::after {
   background: none !important;
   color: #57c57c !important;
 }
-.page-register .form-register button {
+.form-register button {
   background: #57c57c;
   border: 1px solid #57c57c;
   color: #252525;
 }
-.page-register .form-register button:hover {
+.form-register button:hover {
   background: #202020;
+  color: #57c57c;
+}
+
+main.admin-page {
+  min-height: calc(100vh - 50px);
+}
+main.admin-page section.admin-user {
+  color: #57c57c;
+}
+main.admin-page section.admin-user h2 {
   color: #57c57c;
 }
 
 footer {
   background: #252525;
   color: #57c57c;
+  height: 200px;
 }/*# sourceMappingURL=style.css.map */

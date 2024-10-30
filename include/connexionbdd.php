@@ -9,6 +9,7 @@ $options = [
     PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
 ];
 try {
+    global $pdo;
     $pdo = new PDO($dsn, $user, $pass, $options);
 } catch (PDOException $e) {
     dd('Connexion échouée : ' . $e->getMessage());
