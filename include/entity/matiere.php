@@ -1,6 +1,6 @@
 <?php
 
-class Classe
+class Matiere
 {
     private $id;
     private $name;
@@ -14,14 +14,14 @@ class Classe
 
     private function load($pdo)
     {
-        $stmt = $pdo->prepare('SELECT * FROM classes WHERE id = :id');
+        $stmt = $pdo->prepare('SELECT * FROM subjects WHERE id = :id');
         $stmt->bindParam(':id', $this->id, PDO::PARAM_INT);
         $stmt->execute();
-        $classe = $stmt->fetch();
-        if (!$classe) {
-            throw new Exception('Classe not found');
+        $matiere = $stmt->fetch();
+        if (!$matiere) {
+            throw new Exception('Matiere not found');
         }
-        $this->name = $classe['name'];
+        $this->name = $matiere['name'];
     }
 
     public function getId()

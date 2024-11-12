@@ -1,6 +1,3 @@
 <?php
 
-class Cour
-{
-    private $id;
-}
+class Cour {}

@@ -18,11 +18,13 @@ class AdminCour
     private function addCour()
     {
         global $pdo;
-        $stmt = $pdo->prepare('INSERT INTO cours (classe, matiere, enseignant, date) VALUES (:classe_id, :subject_id, :user_id, :datetime)');
+        $stmt = $pdo->prepare('INSERT INTO cours (classe, matiere, enseignant, date, timestart, timeend) VALUES (:classe_id, :subject_id, :user_id, :date, :timeStart, :timeEnd)');
         $stmt->bindParam(':classe_id', $_POST['classe'], PDO::PARAM_INT);
         $stmt->bindParam(':subject_id', $_POST['matiere'], PDO::PARAM_INT);
         $stmt->bindParam(':user_id', $_POST['enseignant'], PDO::PARAM_INT);
-        $stmt->bindParam(':datetime', $_POST['datetime'], PDO::PARAM_STR);
+        $stmt->bindParam(':date', $_POST['date'], PDO::PARAM_STR);
+        $stmt->bindParam(':timeStart', $_POST['timeStart'], PDO::PARAM_STR);
+        $stmt->bindParam(':timeEnd', $_POST['timeEnd'], PDO::PARAM_STR);
         $stmt->execute();
     }
 
@@ -39,11 +41,13 @@ class AdminCour
         }
 
         global $pdo;
-        $stmt = $pdo->prepare('UPDATE cours SET classe = :classe_id, matiere = :subject_id, enseignant = :user_id, date = :datetime WHERE id = :id');
+        $stmt = $pdo->prepare('UPDATE cours SET classe = :classe_id, matiere = :subject_id, enseignant = :user_id, date = :date, timestart = :timeStart, timeend = :timeEnd  WHERE id = :id');
         $stmt->bindParam(':classe_id', $_POST['classe'], PDO::PARAM_INT);
         $stmt->bindParam(':subject_id', $_POST['matiere'], PDO::PARAM_INT);
         $stmt->bindParam(':user_id', $_POST['enseignant'], PDO::PARAM_INT);
-        $stmt->bindParam(':datetime', $_POST['datetime'], PDO::PARAM_STR);
+        $stmt->bindParam(':date', $_POST['date'], PDO::PARAM_STR);
+        $stmt->bindParam(':timeStart', $_POST['timeStart'], PDO::PARAM_STR);
+        $stmt->bindParam(':timeEnd', $_POST['timeEnd'], PDO::PARAM_STR);
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         $stmt->execute();
     }

@@ -59,5 +59,57 @@ $adminHomeController = new AdminHomeController();
 
     <!-- Faire des cartes des cours de la journée pour une classe donnée -->
 
+    <section class="admin-stats container mt-5">
+        <form action="" method="post">
+            <div class="form-group d-flex">
+                <div class="flex-grow-1 ms-2">
+                    <label for="classe">Classe</label>
+                    <select class="form-select" id="classe" name="select-classe" required>
+                        <option selected>Choisir une classe</option>
+                        <?php
+                        $stmt = $pdo->query('SELECT * FROM classes');
+                        while ($row = $stmt->fetch()) : ?>
+                            <option value="<?php echo $row['id']; ?>" <?php if (isset($_POST['select-classe'])) {
+                                                                            echo ($_POST['select-classe'] == $row['id'] ? 'selected' : '');
+                                                                        } ?>><?php echo htmlspecialchars($row['name']); ?></option>
+                        <?php endwhile; ?>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary mt-3">Selectionner un cour</button>
+            </div>
+        </form>
+
+        <?php
+        if (isset($_POST['select-classe'])) {
+            $stmt = $pdo->prepare('SELECT * FROM cours WHERE classe = :class_id');
+            $stmt->bindParam(':class_id', $_POST['select-classe']);
+            $stmt->execute();
+            $coursListe = $stmt->fetchAll();
+            foreach ($coursListe as $cours) :
+                $matierename = new Matiere($cours['matiere']);
+                $classename = new Classe($cours['classe']);
+                $profname = new User($cours['enseignant']);
+        ?>
+                <div class="card border-0 shadow-sm mb-4 rounded-lg mt-5">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <div>
+                                <h5 class="card-title"><?php echo htmlspecialchars($matierename->getName()); ?></h5>
+                                <p class="card-text small"><?php echo htmlspecialchars($classename->getName()); ?></p>
+                            </div>
+                            <div>
+                                <h5 class="card-title">Professeur: <?php echo htmlspecialchars('M. ' . $profname->getLastname()); ?></h5>
+                            </div>
+                            <div>
+                                <p class="card-texte small">Le <?php echo htmlspecialchars($cours['date']) ?></p>
+                                <p class="card-text small">De <?php echo htmlspecialchars($cours['timestart']); ?> à <?php echo htmlspecialchars($cours['timeend']); ?></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        <?php endforeach;
+        }
+        ?>
+    </section>
 
 </main>

@@ -49,6 +49,10 @@ class RegisterForm extends FormValidator
         $role = $_POST['role'];
         $classe = $_POST['classe'];
 
+        if (empty($classe)) {
+            $classe = null;
+        }
+
         // Préparation de la requête SQL
         $sql = "INSERT INTO users (firstname, lastname, mail, password, role, classe) VALUES (:firstname, :lastname, :email, :password, :role, :classe)";
         $stmt = $pdo->prepare($sql);
@@ -64,6 +68,6 @@ class RegisterForm extends FormValidator
         $stmt->execute();
 
         // Redirection
-        header('Location: home?page=user');
+        header('Location: /e5-formation/login');
     }
 }

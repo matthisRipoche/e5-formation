@@ -33,11 +33,4 @@ function preprint($var)
     echo "</pre>";
 }
 
-
-foreach (glob("include/*.php") as $file) {
-    require_once $file;
-}
-
-foreach (glob("include/*/*.php") as $file) {
-    require_once $file;
-}
+require_once 'include/index.php';

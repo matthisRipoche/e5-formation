@@ -47,8 +47,16 @@ $adminClasse = new AdminCour();
             </div>
             <div class="form-group d-flex">
                 <div class="flex-grow-1 ms-2">
-                    <label for="datetime">Date et Heure</label>
-                    <input type="datetime-local" class="form-control" id="datetime" name="datetime" required>
+                    <label for="datetime">Date</label>
+                    <input type="date" class="form-control" id="date" name="date" required>
+                </div>
+                <div class="flex-grow-1 ms-2">
+                    <label for="timeInput">Choisissez une heure (pile ou demi-heure) :</label>
+                    <input type="time" class="form-control" id="timeStart" name="timeStart" step="1800">
+                </div>
+                <div class="flex-grow-1 ms-2">
+                    <label for="timeInput">Choisissez une heure (pile ou demi-heure) :</label>
+                    <input type="time" class="form-control" id="timeEnd" name="timeEnd" step="1800">
                 </div>
                 <div class="flex-grow-1 ms-2">
                     <input type="hidden" name="add-cour" value="add">
@@ -66,7 +74,9 @@ $adminClasse = new AdminCour();
                     <th scope="col">Classe</th>
                     <th scope="col">Matière</th>
                     <th scope="col">Professeur</th>
-                    <th scope="col">Date et Heure</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Heure de début</th>
+                    <th scope="col">Heure de fin</th>
                     <th scope="col">Actions</th>
                 </tr>
             </thead>
@@ -118,8 +128,10 @@ $adminClasse = new AdminCour();
                             </td>
 
                             <td>
-                                <input type="datetime-local" name="datetime" value="<?php echo date('Y-m-d\TH:i', strtotime($cour['date'])); ?>" class="form-control">
+                                <input type="date" name="date" value="<?php echo date('Y-m-d', strtotime($cour['date'])); ?>" class="form-control">
                             </td>
+                            <td><input type="time" name="timeStart" value="<?php echo date('H:i', strtotime($cour['timestart'])) ?>" class="form-control"></td>
+                            <td><input type="time" name="timeEnd" value="<?php echo date('H:i', strtotime($cour['timeend'])) ?>" class="form-control"></td>
                             <td>
                                 <div class="d-flex">
                                     <button type="submit" name="update-cour" value="<?php echo $cour['id']; ?>" class="btn btn-success btn-sm me-2">
