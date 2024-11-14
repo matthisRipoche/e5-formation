@@ -33,4 +33,15 @@ function preprint($var)
     echo "</pre>";
 }
 
+
+//fonction qui vérifie la session
+function isSessionOK()
+{
+    if (!isset($_SESSION['user']) || empty($_SESSION['user'])) {
+        //rediriger vers la page de connexion
+        header('Location: /e5-formation/login');
+        exit();
+    }
+}
+
 require_once 'include/index.php';

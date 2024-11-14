@@ -1,0 +1,13 @@
+.calendar_container {
+    #calendar {
+        /* Ajuste la hauteur des lignes horaires */
+
+        .fc-timegrid-slot {
+            height: 88px !important;
+        }
+
+        .fc-timegrid-slot-lane {
+            height: 88px !important;
+        }
+    }
+}

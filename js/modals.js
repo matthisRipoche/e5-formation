@@ -20,7 +20,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Bouton pour sauvegarder la signature
         const saveButton = document.getElementById("save-btn");
-        saveButton.addEventListener("click", () => {
+        saveButton.addEventListener("click", (e) => {
+            e.preventDefault();
             if (signaturePad.isEmpty()) {
                 alert("Veuillez fournir une signature d'abord.");
             } else {

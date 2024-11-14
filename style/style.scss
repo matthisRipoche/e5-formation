@@ -1,11 +1,12 @@
-@import "var/colors";
 @import "parts/base";
 @import "bootstrap";
 @import "parts/header";
 @import "parts/login";
 @import "parts/register";
 @import "parts/admin";
+@import "parts/calendar";
 
 @import "parts/sign-modal";
+@import "parts/showsign-modal";
 
 @import "parts/footer";

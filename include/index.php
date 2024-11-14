@@ -19,6 +19,9 @@ require_once 'formhandle/registerformhandler.php';
 // include des fichiers dans eleve
 require_once 'eleve/elevehomeController.php';
 
+// include des fichiers dans prof
+require_once 'enseignant/enseignanthomeController.php';
+
 // include des fichiers dans admin
 require_once 'admin/adminhomeController.php';
 require_once 'admin/adminclasseController.php';

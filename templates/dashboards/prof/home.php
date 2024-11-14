@@ -1,28 +1,25 @@
 <?php
 isSessionOK();
-$eleveHomeController = new EleveHomeController();
-//get user connected
-$eleve = $_SESSION['user'];
-
+$enseignanthomeController = new EnseignantHomeController();
+$prof = $_SESSION['user'];
 ?>
 
-<?php include_once 'header.php' ?>
+<?php include_once 'header.php'; ?>
 
 <main class="admin-page container-fluid">
 
-    <!-- Je veux le code ici -->
     <section class="welcome-message mt-4">
-        <h2>Bienvenue, <?php echo htmlspecialchars($eleve->getFirstname()) . ' ' . htmlspecialchars($eleve->getLastname()); ?> !</h1>
+        <h2>Bienvenue, <?php echo htmlspecialchars($prof->getFirstname()) . ' ' . htmlspecialchars($prof->getLastname()); ?> !</h1>
     </section>
 
     <section class="admin-stats container mt-5">
         <h2>Voici vos cours du jour :</h2>
         <?php
-        if ($eleve->getClasse()->getId()) :
-            $classe = $eleve->getClasse()->getId();
+        if ($prof->getId()) :
+            $enseignant = $prof->getId();
             //get all cours for the class for the day
-            $stmt = $pdo->prepare('SELECT * FROM cours WHERE classe = :class_id' . ' AND date = CURDATE()');
-            $stmt->bindParam(':class_id', $classe, PDO::PARAM_INT);
+            $stmt = $pdo->prepare('SELECT * FROM cours WHERE enseignant = :enseignant' . ' AND date = CURDATE()');
+            $stmt->bindParam(':enseignant', $enseignant, PDO::PARAM_INT);
             $stmt->execute();
             $coursListe = $stmt->fetchAll();
         ?>
@@ -31,15 +28,6 @@ $eleve = $_SESSION['user'];
                     $matierename = new Matiere($cours['matiere']);
                     $classename = new Classe($cours['classe']);
                     $profname = new User($cours['enseignant']);
-
-
-                    $eleveID = $eleve->getId();
-                    $coursID = $cours['id'];
-                    $stmt = $pdo->prepare('SELECT * FROM signature WHERE eleve = :eleve AND cour = :cours');
-                    $stmt->bindParam(':eleve', $eleveID, PDO::PARAM_INT);
-                    $stmt->bindParam(':cours', $coursID, PDO::PARAM_INT);
-                    $stmt->execute();
-                    $sign = $stmt->fetch();
                 ?>
                     <div class="card border-0 shadow-sm mb-4 rounded-lg mt-5">
                         <div class="card-body">
@@ -58,10 +46,10 @@ $eleve = $_SESSION['user'];
 
                                 <form action="" method="post">
                                     <input type="hidden" name="sign-cours-id" value="<?php echo $cours['id']; ?>">
-                                    <?php if (isset($sign) && !empty($sign)): ?>
-                                        <input class="btn btn-primary openmodal" type="submit" name="showsign" value="Voir signature">
+                                    <?php if ($cours['statut'] == 0): ?>
+                                        <input class="btn btn-primary" type="submit" name="enablesign" value="Appel">
                                     <?php else: ?>
-                                        <input class="btn btn-primary openmodal" type="submit" name="sign-cours" value="Signer" <?php echo ($cours['statut'] == 1) ? '' : 'disabled'; ?>>
+                                        <p>Validé</p>
                                     <?php endif; ?>
                                 </form>
                             </div>

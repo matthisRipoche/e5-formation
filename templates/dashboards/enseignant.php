@@ -1,1 +1,0 @@
-<h1>Enseignant</h1>

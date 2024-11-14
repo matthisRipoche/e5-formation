@@ -2,8 +2,11 @@
 
 class AdminCour
 {
+    public $error = '';
+
     public function __construct()
     {
+        $this->error = '';
         if (isset($_POST['add-cour'])) {
             $this->addCour();
         }
@@ -18,6 +21,24 @@ class AdminCour
     private function addCour()
     {
         global $pdo;
+        //je veux vérifier que les classes ou le professeur n ont pas de cours au meme moment
+        //recuperer les cours de la classe
+        $stmt = $pdo->prepare('SELECT * FROM cours WHERE classe = :classe_id AND date = :date');
+        $stmt->bindParam(':classe_id', $_POST['classe'], PDO::PARAM_INT);
+        $stmt->bindParam(':date', $_POST['date'], PDO::PARAM_STR);
+        $stmt->execute();
+        $coursListe = $stmt->fetchAll();
+        foreach ($coursListe as $cours) {
+            if ($_POST['timeStart'] >= $cours['timestart'] && $_POST['timeStart'] <= $cours['timeend']) {
+                $this->error = 'La classe a déjà un cours à ce moment';
+                return;
+            }
+            if ($_POST['timeEnd'] >= $cours['timestart'] && $_POST['timeEnd'] <= $cours['timeend']) {
+                $this->error = 'La classe a déjà un cours à ce moment';
+                return;
+            }
+        }
+
         $stmt = $pdo->prepare('INSERT INTO cours (classe, matiere, enseignant, date, timestart, timeend) VALUES (:classe_id, :subject_id, :user_id, :date, :timeStart, :timeEnd)');
         $stmt->bindParam(':classe_id', $_POST['classe'], PDO::PARAM_INT);
         $stmt->bindParam(':subject_id', $_POST['matiere'], PDO::PARAM_INT);

@@ -1,43 +1,12 @@
-body {
-    background: $first_bg !important;
-}
-
 a {
     text-decoration: none !important ;
-    color: $first_color !important;
-}
-
-h2 {
-    color: $first_color !important;
 }
 
 table {
-    tr th,
-    tr td {
-        background: $secondary_bg !important;
-        color: $first_color !important;
-    }
     input {
-        background: $first_bg !important;
         border: none !important;
-        color: $first_color !important;
     }
     select {
-        background: $first_bg !important;
         border: none !important;
-        color: $first_color !important;
-        background-image: $first_color !important;
     }
-}
-
-.card {
-    background: $secondary_bg !important;
-    color: $first_color !important;
-    border: 1px solid $first_color !important;
-}
-
-.openmodal {
-    background: $first_color !important;
-    color: white !important;
-    border-color: $first_bg !important;
 }

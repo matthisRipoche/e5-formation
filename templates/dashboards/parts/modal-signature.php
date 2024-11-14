@@ -3,7 +3,7 @@
     <div id="sign-modal">
         <div class="background"></div>
         <div class="content">
-            <div class="modal-header">
+            <div class="modal-header bg-dark">
                 <h5 class="modal-title">Signer le cours</h5>
                 <div class="close-btn">
                     <form action="" method="post">
@@ -11,7 +11,7 @@
                     </form>
                 </div>
             </div>
-            <div class="modal-body">
+            <div class="modal-body bg-light">
                 <div class="canva_container">
                     <canvas id="signature-pad" width="700" height="300" style="border: 1px solid #000;"></canvas>
                 </div>

@@ -70,7 +70,7 @@
         </div>
 
         <input type="hidden" name="register-submit">
-        <button class="btn w-100 py-2" type="submit">Register</button>
+        <input class="btn w-100 py-2 bg-dark text-white" type="submit" value="Register">
     </form>
 
     <div class="error">
