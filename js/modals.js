@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 alert("Veuillez fournir une signature d'abord.");
             } else {
                 const dataURL = signaturePad.toDataURL("image/png");
-
+                console.log(dataURL);
                 fetch("include/upload_signature.php", {
                     method: "POST",
                     body: JSON.stringify({ image: dataURL }),

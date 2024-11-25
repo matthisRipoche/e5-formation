@@ -29,6 +29,9 @@ class AdminUser
         $stmt->bindParam(':firstname', $_POST['firstname'], PDO::PARAM_STR);
         $stmt->bindParam(':lastname', $_POST['lastname'], PDO::PARAM_STR);
         $stmt->bindParam(':email', $_POST['email'], PDO::PARAM_STR);
+        if (!isset($_POST['role'])) {
+            $_POST['role'] = 'admin';
+        }
         $stmt->bindParam(':role', $_POST['role'], PDO::PARAM_STR);
 
         // Si la classe est NULL, on utilise PDO::PARAM_NULL pour lier la valeur à la requête

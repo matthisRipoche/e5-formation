@@ -18,9 +18,11 @@ require_once 'formhandle/registerformhandler.php';
 
 // include des fichiers dans eleve
 require_once 'eleve/elevehomeController.php';
+require_once 'eleve/eleveedtController.php';
 
 // include des fichiers dans prof
 require_once 'enseignant/enseignanthomeController.php';
+require_once 'enseignant/enseignantedtController.php';
 
 // include des fichiers dans admin
 require_once 'admin/adminhomeController.php';
@@ -28,3 +30,4 @@ require_once 'admin/adminclasseController.php';
 require_once 'admin/adminmatiereController.php';
 require_once 'admin/admincourController.php';
 require_once 'admin/adminuserController.php';
+require_once 'admin/adminsignaturesController.php';

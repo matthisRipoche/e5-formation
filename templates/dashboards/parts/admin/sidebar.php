@@ -36,6 +36,12 @@
                         Cours
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link d-flex align-items-center gap-2 text-white" href="<?php echo $baseUrl ?>dashboards/admin/signatures">
+                        <i class="bi bi-graph-up"></i>
+                        Signatures
+                    </a>
+                </li>
             </ul>
 
             <ul class="nav flex-column mb-auto">

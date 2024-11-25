@@ -2,7 +2,12 @@
 
 class AdminHomeController
 {
-    public function __construct() {}
+    public function __construct()
+    {
+        if ($_SERVER['REQUEST_URI'] == '/e5-formation/dashboards/admin/home') {
+            header('Location: /e5-formation/home');
+        }
+    }
 
     public function getNbAdmins()
     {

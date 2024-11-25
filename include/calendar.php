@@ -14,56 +14,55 @@ class AjaxCalendar
         header('Content-Type: application/json');
         $input = json_decode(file_get_contents("php://input"), true);
 
-        // Vérifier si courID est défini dans la requête
         if (isset($input['classId'])) {
             $classID = $input['classId'];
 
+            // Inclure la connexion PDO
             include_once 'connexionbdd.php';
 
-            // get cours with classID
+
+            // Préparer la requête avec les `JOIN` pour récupérer les informations des matières et professeurs en une seule requête
             global $pdo;
-            $stmt = $pdo->prepare('SELECT * FROM cours WHERE classe = :class_id');
+            $query = "
+                SELECT 
+                    cours.id,
+                    cours.classe,
+                    cours.date,
+                    cours.timestart,
+                    cours.timeend,
+                    subjects.name AS matiere_name,
+                    users.lastname AS professeur_name
+                FROM cours
+                LEFT JOIN subjects ON cours.matiere = subjects.id
+                LEFT JOIN users ON cours.enseignant = users.id
+                WHERE cours.classe = :class_id
+            ";
+
+            // Préparation et exécution de la requête
+            $stmt = $pdo->prepare($query);
             $stmt->bindParam(':class_id', $classID, PDO::PARAM_INT);
             $stmt->execute();
 
+            // Récupérer les résultats
             $courListe = $stmt->fetchAll();
 
+
             if ($courListe) {
-                foreach ($courListe as $cour) {
-                    $matiereID = $cour['matiere'];
-                    $stmt = $pdo->prepare('SELECT * FROM subjects WHERE id = :matiere_id');
-                    $stmt->bindParam(':matiere_id', $matiereID, PDO::PARAM_INT);
-                    $stmt->execute();
-                    $matiere = $stmt->fetch();
-                    // Ajouter le nom de la matière au tableau cour
-                    $cour['matiere_name'] = $matiere['name'];
-
-                    $professeurID = $cour['professeur'];
-                    $stmt = $pdo->prepare('SELECT * FROM users WHERE id = :professeur_id');
-                    $stmt->bindParam(':professeur_id', $professeurID, PDO::PARAM_INT);
-                    $stmt->execute();
-                    $professeur = $stmt->fetch();
-                    //ajouter une ligne pour le nom du professeur
-                    $cour['professeur_name'] = $professeur['name'];
-                }
-
                 echo json_encode([
                     "status" => "success",
-                    "message" => "Ajax request received",
-                    "class" => $classID,
-                    "cours" => $courListe
+                    "message" => "Requête AJAX reçue avec succès",
+                    "cour" => $courListe
                 ]);
             } else {
                 echo json_encode([
-                    "status" => "error",
-                    "message" => "Impossible de récupérer les cours de la classe."
+                    "status" => "success",
+                    "message" => "Cette classe n'a pas de cours"
                 ]);
-                return;
             }
         } else {
             echo json_encode([
-                "status" => "success",
-                "message" => "No class ID found",
+                "status" => "error",
+                "message" => "Aucun classId trouvé dans la requête."
             ]);
         }
     }

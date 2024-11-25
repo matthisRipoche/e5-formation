@@ -3,7 +3,8 @@
 
 <script src="<?= $baseUrl ?>js/main.js"></script>
 <script src="<?= $baseUrl ?>js/modals.js"></script>
-<script src="js/calendar.js"></script>
+<script src="<?= $baseUrl ?>js/calendar.js"></script>
+<script src="<?= $baseUrl ?>js/elevecalendar.js"></script>
 
 
 </body>

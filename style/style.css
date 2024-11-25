@@ -12019,13 +12019,10 @@ main.admin-page {
   min-height: calc(100vh - 50px);
 }
 
-.calendar_container #calendar {
-  /* Ajuste la hauteur des lignes horaires */
-}
-.calendar_container #calendar .fc-timegrid-slot {
+.calendar_container .fc-timegrid-slot {
   height: 88px !important;
 }
-.calendar_container #calendar .fc-timegrid-slot-lane {
+.calendar_container .fc-timegrid-slot-lane {
   height: 88px !important;
 }
 

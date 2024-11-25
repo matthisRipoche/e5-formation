@@ -3,7 +3,6 @@ isSessionOK();
 $eleveHomeController = new EleveHomeController();
 //get user connected
 $eleve = $_SESSION['user'];
-
 ?>
 
 <?php include_once 'header.php' ?>
@@ -17,6 +16,7 @@ $eleve = $_SESSION['user'];
 
     <section class="admin-stats container mt-5">
         <h2>Voici vos cours du jour :</h2>
+        <a href="/e5-formation/dashboards/eleve/emploi-du-temps" class="float-right"><small>Emploi du temps</small></a>
         <?php
         if ($eleve->getClasse()->getId()) :
             $classe = $eleve->getClasse()->getId();

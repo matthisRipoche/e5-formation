@@ -1,5 +1,3 @@
-console.log("calendar.js chargé");
-
 document.addEventListener("DOMContentLoaded", function () {
     var calendarEl = document.getElementById("calendar");
     var calendar = new FullCalendar.Calendar(calendarEl, {
@@ -34,18 +32,18 @@ document.addEventListener("DOMContentLoaded", function () {
         })
             .then((response) => response.json())
             .then((data) => {
-                console.log(data.cours);
+                console.log(data.cour);
                 // clear calendar
                 var calendarEl = document.getElementById("calendar");
                 calendarEl.innerHTML = "";
 
                 // create events
                 var events = [];
-                data.cours.forEach((cours) => {
+                data.cour.forEach((cour) => {
                     events.push({
-                        title: cours.nom,
-                        start: cours.date + "T" + cours.timestart,
-                        end: cours.date + "T" + cours.timeend,
+                        title: cour.matiere_name,
+                        start: cour.date + "T" + cour.timestart,
+                        end: cour.date + "T" + cour.timeend,
                     });
                 });
 
